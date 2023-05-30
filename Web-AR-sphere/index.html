@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset='utf-8'>
+	<title>Map with AR</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no'>
+	<!-- map -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css'>
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js'></script>
+	<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css'>
+	<!-- AR -->
+	<script src="https://unpkg.com/three@0.140.0/build/three.min.js"></script>
+	<script src="https://unpkg.com/three@0.133.0/examples/js/controls/DeviceOrientationControls.js"></script>
+	<script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js"></script>
+	
+	<script src="./script.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#map {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			height: 90%
+		}
+
+		#canvas {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			left: 100%;
+		}
+
+		.box {
+			display: flex;
+			position: absolute;
+			align-items: center;
+			justify-content: center;
+			top: 90%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.slider {
+			position: absolute;
+			height: 30%;
+			top: 67%;
+			bottom: 0;
+			left: 195%;
+			right: 0;
+			writing-mode: bt-lr;
+			-webkit-appearance: slider-vertical;
+			z-index: 1;
+		}
+
+		input[type="range"]::-webkit-slider-thumb {
+			-webkit-appearance: none; /*  デフォルトのつまみのスタイルを解除 */
+			background: #53aeff; /* 背景色 */
+			width: 30px; /* 幅 */
+			height: 30px; /* 高さ */
+			border-radius: 50%; /* 円形に */
+			box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15); /* 影 */
+		}
+
+		input[type="range"]::-moz-range-thumb {
+			background: #53aeff; /* 背景色 */
+			width: 30px; /* 幅 */
+			height: 30px; /* 高さ */
+			border-radius: 50%; /* 円形に */
+			box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15); /* 影 */
+			border: none; /* デフォルトの線を消す */
+		}
+
+		input[type="range"]::-moz-focus-outer {
+			border: 0;
+		}
+
+		input[type="range"]:active::-webkit-slider-thumb {
+			box-shadow: 0px 5px 10px -2px rgba(0, 0, 0, 0.3);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="box">
+		<button id="btn">START</button>
+	</div>
+
+	<div id='map'></div>
+
+	<canvas id="canvas"></canvas>
+
+	<input id="slider" class="hidden" type="range" min="0" max="50" value='5' step="1"> 		 
+</body>
+
+</html>
