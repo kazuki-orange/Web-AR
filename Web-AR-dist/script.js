@@ -241,7 +241,7 @@ const unit = () => {
   };
 
   // map part
-  mapboxgl.accessToken = 'pk.eyJ1Ijoia2F6dWtpLW9yYW5nZSIsImEiOiJjbDJkZXJoZmcwcTNmM2NrcTZ5NHA1NjFkIn0.BMSxixgiTOB-d2MZPTeMOw';
+  mapboxgl.accessToken = 'your access token';
   navigator.geolocation.getCurrentPosition(suc, err, {enableHighAccuracy: true});
   function suc(pos) {
     const lng = pos.coords.longitude;
